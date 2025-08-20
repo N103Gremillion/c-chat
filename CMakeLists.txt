@@ -4,8 +4,9 @@ project(c-chat VERSION 1.0 LANGUAGES C)
 # c files 
 set (SOURCES
   src/main.c
-  src/client/client.c
-  src/server/server.c
+  src/chat_node/chat_node.c
+  src/bootstrap_node/bootstrap_node.c
+  src/utils/utils.c
 )
 
 add_executable(c-chat ${SOURCES})
