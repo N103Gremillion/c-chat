@@ -18,6 +18,9 @@
 
 // setup a basic socket to listen for incomming requests and add the fds you want to poll for
 typedef struct BootstrapNode {
+  char *loopback_ip;
+  char *lan_ip;
+  char *public_ip;
   struct sockaddr_in *ipv4_address;
 } BootstrapNode;
 
@@ -26,7 +29,7 @@ int get_bootstrap_node_address(
   struct sockaddr_in **ipv4_address
 );
 int init_bootstrap_node();
-struct addrinfo* get_bootstrap_node_address_list();
+int get_bootstrap_node_address_list();
 
 
 #endif
