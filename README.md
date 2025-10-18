@@ -1,6 +1,10 @@
 # c-chat
 This project is an end-to-end chat system written in C that demonstrates how to build reliable communication over sockets. It implements both the client and server sides of a messaging system, handling connection setup, message transmission, and state management. The goal of this project is to explore the fundamentals of network programming in C.
 
+# setup
+1.) install raylib (graphics library I used)
+2.) install raygui.h and put it in the include directory (can be found here https://github.com/raysan5/raygui)
+
 # build
 1.) create a build folder in the root of the project
 2.) run the build.sh script to build the inital binary

@@ -1,8 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "./bootstrap_node/bootstrap_node.h"
+#include "bootstrap_node.h"
+#include "messaging_gui.h"
 
 int main(int argc, char* argv[]) {
-  init_bootstrap_node();
+  Message_GUI* gui = init_messaging_gui();
   return 0;
 }
