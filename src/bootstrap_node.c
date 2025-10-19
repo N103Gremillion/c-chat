@@ -1,21 +1,22 @@
 #include "bootstrap_node.h"
 
 
-
+// TODO
 BootstrapNode* init_bootstrap_node() {
-  struct addrinfo *addr_info_list = get_bootstrap_node_address_list(); // this is a linked list 
-  struct sockaddr_in *ipv4_address = NULL; 
+  // struct addrinfo *addr_info_list = get_bootstrap_node_address_list(); // this is a linked list 
+  // struct sockaddr_in *ipv4_address = NULL; 
   
-  if (get_bootstrap_node_address(addr_info_list, &ipv4_address) != 0) {
-    fprintf(stderr, "Error: no IPv4 address found for this bootstrap node\n");
-    return -1;
-  }
+  // if (get_bootstrap_node_address(addr_info_list, &ipv4_address) != 0) {
+  //   fprintf(stderr, "Error: no IPv4 address found for this bootstrap node\n");
+  //   return NULL;
+  // }
 
-  free(addr_info_list);
-  BootstrapNode *bootstrap_node = (BootstrapNode*) malloc(sizeof(BootstrapNode));
-  bootstrap_node->ipv4_address = ipv4_address;
-  print_ipv4_address(bootstrap_node->ipv4_address);
-  return bootstrap_node;
+  // free(addr_info_list);
+  // BootstrapNode *bootstrap_node = (BootstrapNode*) malloc(sizeof(BootstrapNode));
+  // bootstrap_node->ipv4_address = ipv4_address;
+  // print_ipv4_address(bootstrap_node->ipv4_address);
+  // return bootstrap_node;
+  return NULL;
 }
 
 int get_bootstrap_node_address_list(struct addrinfo **addr_info_list) {
@@ -60,4 +61,3 @@ int get_bootstrap_node_address(
 
   return -1;
 }
-

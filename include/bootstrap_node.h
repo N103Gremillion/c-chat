@@ -30,6 +30,6 @@ int get_bootstrap_node_address(
 );
 
 BootstrapNode* init_bootstrap_node();
-struct addrinfo* get_bootstrap_node_address_list();
+int get_bootstrap_node_address_list();
 
 #endif

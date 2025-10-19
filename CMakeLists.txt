@@ -9,7 +9,7 @@ set (SOURCES
   src/main.c
   src/chat_node.c
   src/bootstrap_node.c
-  src/messaging_gui.c
+  src/graphics/gui.c
   src/utils.c
 )
 
