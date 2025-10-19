@@ -1,15 +1,9 @@
 #include "bootstrap_node.h"
 
-int init_bootstrap_node() {
 
 
-  struct addrinfo *addr_info_list = NULL; 
-  
-  if (get_bootstrap_node_address_list(&(addr_info_list)) != 0) {// this is a linked list 
-    fprintf(stderr, "Failed to get bootstrap addresses\n");
-    return -1;
-  }
-
+BootstrapNode* init_bootstrap_node() {
+  struct addrinfo *addr_info_list = get_bootstrap_node_address_list(); // this is a linked list 
   struct sockaddr_in *ipv4_address = NULL; 
   
   if (get_bootstrap_node_address(addr_info_list, &ipv4_address) != 0) {
@@ -17,10 +11,11 @@ int init_bootstrap_node() {
     return -1;
   }
 
-  print_ipv4_address(ipv4_address);
-
-  // free(addr_info_list);
-  return 0;
+  free(addr_info_list);
+  BootstrapNode *bootstrap_node = (BootstrapNode*) malloc(sizeof(BootstrapNode));
+  bootstrap_node->ipv4_address = ipv4_address;
+  print_ipv4_address(bootstrap_node->ipv4_address);
+  return bootstrap_node;
 }
 
 int get_bootstrap_node_address_list(struct addrinfo **addr_info_list) {

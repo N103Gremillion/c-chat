@@ -8,7 +8,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 
-#include "../utils/utils.h"
+#include "utils.h"
 
 #define BOOTSTRAP_START_PORT 8080
 #define BOOTSTRAP_MAX_NODES 5
@@ -28,8 +28,8 @@ int get_bootstrap_node_address(
   struct addrinfo *linked_list,
   struct sockaddr_in **ipv4_address
 );
-int init_bootstrap_node();
-int get_bootstrap_node_address_list();
 
+BootstrapNode* init_bootstrap_node();
+struct addrinfo* get_bootstrap_node_address_list();
 
 #endif
