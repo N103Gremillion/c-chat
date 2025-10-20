@@ -10,6 +10,7 @@ set (SOURCES
   src/chat_node.c
   src/bootstrap_node.c
   src/graphics/gui.c
+  src/graphics/toolbar.c
   src/utils.c
 )
 

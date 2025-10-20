@@ -2,8 +2,11 @@
 #define MESSAGING_GUI_H
 
 #include <stdlib.h>
+
 #include "utils.h"
+#include "toolbar.h"
 #include "gui_config.h"
+
 #include "raylib.h"
 #include "raygui.h"
 
@@ -14,6 +17,7 @@ typedef struct GUI {
   int width;
   int fps;
   Color background_color;
+  Toolbar *toolbar;
 } GUI;
 
 GUI* init_gui();

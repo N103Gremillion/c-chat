@@ -5,6 +5,6 @@
 #define GUI_WINDOW_WIDTH 1000
 #define GUI_WINDOW_HEIGHT 1000
 #define FPS 60
-#define GUI_BACKGROUND_COLOR (Color){75, 87, 92, 255} 
+#define GUI_BACKGROUND_COLOR (Color) {75, 87, 92, 255} 
 
 #endif

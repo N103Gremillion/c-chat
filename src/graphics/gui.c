@@ -7,7 +7,7 @@ GUI* init_gui() {
   gui->width = GUI_WINDOW_WIDTH;
   gui->fps = FPS;
   gui->background_color = GUI_BACKGROUND_COLOR;
-
+  gui->toolbar = init_toolbar();
   return gui;
 }
 
@@ -19,7 +19,10 @@ void setup_messaging_window(GUI* gui) {
   while (!WindowShouldClose()) {
     BeginDrawing();
 
+    // draw background
     ClearBackground(gui->background_color);
+
+    render_toolbar(gui->toolbar);
 
     EndDrawing();
   }
