@@ -10,6 +10,6 @@
 void print_ipv4_address(struct sockaddr_in *ipv4_address);
 void* safe_malloc(size_t bytes_to_malloc);
 
-#define MALLOC(type) ((void*)safe_malloc(sizeof(type)));
+#define MALLOC(type, count) ((void*)safe_malloc(sizeof(type) * count));
 
 #endif

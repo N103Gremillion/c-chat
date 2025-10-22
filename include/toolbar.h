@@ -8,39 +8,44 @@
 #include "raygui.h"
 
 // exit button
-#define EXIT_BUTTON_HEIGHT 100
-#define EXIT_BUTTON_WIDTH 100
-#define EXIT_BUTTON_X 900
-#define EXIT_BUTTON_Y 0
+#define EXIT_BUTTON_HEIGHT 50
+#define EXIT_BUTTON_WIDTH 50
+#define EXIT_BUTTON_X 925
+#define EXIT_BUTTON_Y 25
 #define EXIT_BUTTON_COLOR (Color) {237, 19, 19, 255}
+#define EXIT_BUTTON_IMG_PATH "textures/toolbar/exit_button.png"
+#define EXIT_BUTTON_HOVER_IMG_PATH "textures/toolbar/exit_button_hover.png"
 
 // toolbar
 #define TOOLBAR_HEIGHT 100
 #define TOOLBAR_WIDTH GUI_WINDOW_WIDTH
 #define TOOLBAR_X 0
 #define TOOLBAR_Y 0
-#define TOOLBAR_COLOR (Color) {47, 90, 158, 255} 
+#define TOOLBAR_COLOR (Color) {55, 64, 85, 255} 
+#define TOOLBAR_BUTTON_COUNT 1
 
-typedef struct ExitButton {
-  int x;
-  int y;
-  int width;
-  int height;
+enum ButtonType {
+  EXIT
+};
+
+typedef struct Button {
+  Rectangle bounds;
   Color color;
-} ExitButton;
+  enum ButtonType type;
+  Texture2D texture;
+  Texture2D hover_texture;
+} Button;
 
 typedef struct Toolbar {
   Rectangle bounds;
-  int x;
-  int y;
-  int width;
-  int height;
+  float ratio;
   Color color;
-  ExitButton *exit_button;
+  Button **buttons;
 } Toolbar;
 
 Toolbar* init_toolbar();
-ExitButton* init_exit_button();
+Button** init_toolbar_buttons();
+void load_set_toolbar_textures(Toolbar** toolbar);
 void render_toolbar(Toolbar* toolbar);
 
 #endif
