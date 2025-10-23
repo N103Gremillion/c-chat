@@ -22,6 +22,10 @@ typedef struct GUI {
 
 GUI* init_gui();
 void setup_messaging_window(GUI* gui);
-void load_set_textures(GUI **gui);
+void update_gui(GUI* gui);
+void render_gui(GUI* gui);
+void handle_left_click(GUI* gui);
+void load_set_textures(GUI** gui);
+void free_gui(GUI* gui);
 
 #endif

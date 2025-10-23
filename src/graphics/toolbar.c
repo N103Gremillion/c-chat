@@ -39,12 +39,12 @@ Button** init_toolbar_buttons() {
 void load_set_toolbar_textures(Toolbar **toolbar) {
   // load the button textures
   for (int i=0; i<TOOLBAR_BUTTON_COUNT; i++){
-    Button *cur_button = (*toolbar)->buttons[i];
-    if (!cur_button) continue;
+    Button *button = (*toolbar)->buttons[i];
+    if (!button) continue;
 
-    if (cur_button->type == EXIT) {
-      cur_button->texture = LoadTexture(EXIT_BUTTON_IMG_PATH);
-      cur_button->hover_texture = LoadTexture(EXIT_BUTTON_HOVER_IMG_PATH);
+    if (button->type == EXIT) {
+      button->texture = LoadTexture(EXIT_BUTTON_IMG_PATH);
+      button->hover_texture = LoadTexture(EXIT_BUTTON_HOVER_IMG_PATH);
     } 
   }
 }
@@ -55,24 +55,48 @@ void render_toolbar(Toolbar* toolbar) {
   DrawRectangleRec(toolbar->bounds, toolbar->color);
   
   // render buttons
-  Vector2 mouse_position = GetMousePosition();
+  Vector2 mouse_pos = GetMousePosition();
 
   for (int i = 0; i<TOOLBAR_BUTTON_COUNT; i++) {
-    Button* cur_button = toolbar->buttons[i];
-    if (!cur_button) continue;
+    Button* button = toolbar->buttons[i];
+    if (!button) continue;
     
-    bool is_hovering = CheckCollisionPointRec(mouse_position, cur_button->bounds);
-    if (cur_button->type == EXIT) {
+    bool is_hovering = CheckCollisionPointRec(mouse_pos, button->bounds);
+    if (button->type == EXIT) {
       if (is_hovering) {
-        DrawTexture(cur_button->hover_texture, cur_button->bounds.x, cur_button->bounds.y, WHITE);
+        DrawTexture(button->hover_texture, button->bounds.x, button->bounds.y, WHITE);
       } 
       else {
-        DrawTexture(cur_button->texture, cur_button->bounds.x, cur_button->bounds.y, WHITE);
+        DrawTexture(button->texture, button->bounds.x, button->bounds.y, WHITE);
       }
     }
-
   }
+}
 
+void check_handle_toolbar_button_click(Toolbar* toolbar) {
+  Vector2 mouse_pos = GetMousePosition();
+
+  for (int i=0; i < TOOLBAR_BUTTON_COUNT; i++) {
+    Button* button = toolbar->buttons[i];
+    if (!button) continue;
+
+    bool is_hovering = CheckCollisionPointRec(mouse_pos, button->bounds);
+
+    if (button->type == EXIT) {
+      if (is_hovering) {
+        CloseWindow();
+      }
+    }
+  }
+}
+
+void free_toolbar(Toolbar* toolbar) {
+  // free all the buttons first
+  for (int i=0; i<TOOLBAR_BUTTON_COUNT; i++) {
+    free(toolbar->buttons[i]);
+  }
+  free(toolbar->buttons);
+  free(toolbar);
 }
 
 

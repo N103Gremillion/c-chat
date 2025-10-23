@@ -21,10 +21,11 @@ void setup_messaging_window(GUI* gui) {
 
   while (!WindowShouldClose()) {
     BeginDrawing();
-
-    // draw background
-    ClearBackground(gui->background_color);
-    render_toolbar(gui->toolbar);
+    
+    // update
+    update_gui(gui);
+    // render
+    render_gui(gui);
 
     EndDrawing();
   }
@@ -32,6 +33,26 @@ void setup_messaging_window(GUI* gui) {
   CloseWindow();
 }
 
+void update_gui(GUI* gui) {
+  if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    handle_left_click(gui);
+  }
+}
+
+void handle_left_click(GUI* gui) {
+  check_handle_toolbar_button_click(gui->toolbar);
+}
+
+void render_gui(GUI* gui) {
+  ClearBackground(gui->background_color);
+  render_toolbar(gui->toolbar);
+}
+
 void load_set_textures(GUI **gui) {
   load_set_toolbar_textures(&((*gui)->toolbar));
+}
+
+void free_gui(GUI* gui) {
+  free_toolbar(gui->toolbar);
+  free(gui);
 }
