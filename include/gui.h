@@ -18,11 +18,13 @@ typedef struct GUI {
   int fps;
   Color background_color;
   Toolbar *toolbar;
+  enum Page page;
 } GUI;
 
 GUI* init_gui();
 void setup_messaging_window(GUI* gui);
 void update_gui(GUI* gui);
+void render_current_page(GUI* gui);
 void render_gui(GUI* gui);
 void handle_left_click(GUI* gui);
 void load_set_textures(GUI** gui);

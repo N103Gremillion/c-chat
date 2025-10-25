@@ -7,4 +7,14 @@
 #define FPS 60
 #define GUI_BACKGROUND_COLOR (Color) {75, 87, 92, 255} 
 
+enum ButtonType {
+  EXIT
+};
+
+enum Page {
+  ENTRY_PAGE,
+  LOGIN_PAGE,
+  SIGN_UP_PAGE
+};
+
 #endif

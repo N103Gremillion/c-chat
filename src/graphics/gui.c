@@ -8,6 +8,7 @@ GUI* init_gui() {
   gui->fps = FPS;
   gui->background_color = GUI_BACKGROUND_COLOR;
   gui->toolbar = init_toolbar();
+  gui->page = ENTRY_PAGE;
   return gui;
 }
 
@@ -24,6 +25,7 @@ void setup_messaging_window(GUI* gui) {
     
     // update
     update_gui(gui);
+
     // render
     render_gui(gui);
 
@@ -43,8 +45,13 @@ void handle_left_click(GUI* gui) {
   check_handle_toolbar_button_click(gui->toolbar);
 }
 
+void render_current_page(GUI* gui) {
+
+}
+
 void render_gui(GUI* gui) {
   ClearBackground(gui->background_color);
+  render_current_page(gui);
   render_toolbar(gui->toolbar);
 }
 

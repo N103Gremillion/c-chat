@@ -25,10 +25,6 @@
 
 #define TOOLBAR_BUTTON_COUNT 1
 
-enum ButtonType {
-  EXIT
-};
-
 typedef struct Button {
   Rectangle bounds;
   Color color;
